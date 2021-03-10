@@ -1,4 +1,4 @@
-FROM forumi0721/arch-armhf-base
+FROM lopsided/archlinux
 LABEL maintainer="github.com/razaqq"
 
 # additional files
