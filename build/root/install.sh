@@ -135,17 +135,6 @@ usermod -d /home/nobody nobody
 # set shell for user nobody
 chsh -s /bin/bash nobody
  
-# delme once fixed!!
-# force downgrade of coreutils - fixes permission denied issue when building on docker hub
-# https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/32
-# curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-time 60 -o /tmp/coreutils.tar.xz -L "https://github.com/binhex/arch-packages/raw/master/compiled/x86-64/coreutils.tar.xz"
-# pacman -U '/tmp/coreutils.tar.xz' --noconfirm
-# /delme once fixed!!
-
-# force re-install of ncurses 6.x with 5.x backwards compatibility (can be removed once all apps have switched over to ncurses 6.x)
-# curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-time 60 -o /tmp/ncurses5-compat.tar.xz -L "https://github.com/binhex/arch-packages/raw/master/compiled/x86-64/ncurses5-compat-libs.tar.xz"
-# pacman -U '/tmp/ncurses5-compat.tar.xz' --noconfirm
-
 # find latest tini release tag from github
 curl --connect-timeout 5 --max-time 600 --retry 5 --retry-delay 0 --retry-max-time 60 -o /tmp/tini_release_tag -L "https://github.com/krallin/tini/releases"
 tini_release_tag=$(cat /tmp/tini_release_tag | grep -P -o -m 1 '(?<=/krallin/tini/releases/tag/)[^"]+')
@@ -165,7 +154,7 @@ fi
 pacman -Ru dotnet-sdk yarn git yay-bin reflector gcc binutils --noconfirm 2> /dev/null || true
 
 # general cleanup
-yes|pacman -Scc
+# yes|pacman -Scc
 pacman --noconfirm -Rns $(pacman -Qtdq) 2> /dev/null || true
 rm -rf /var/cache/* \
 /var/empty/.cache/* \

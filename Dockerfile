@@ -1,4 +1,4 @@
-FROM lopsided/archlinux
+FROM agners/archlinuxarm-arm64v8
 LABEL maintainer="github.com/razaqq"
 
 # additional files
@@ -9,8 +9,6 @@ ADD build/*.conf /etc/supervisor.conf
 
 # add install bash script
 ADD build/root/*.sh /root/
-
-# symlink busybox utilities to /bootstrap folder
 
 RUN chmod +x /root/*.sh && \
 	/bin/bash /root/install.sh
