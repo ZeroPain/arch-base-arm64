@@ -8,9 +8,6 @@ set -e
 # previous as the mirror from live to the archive for arm packages is slow
 snapshot_date=$(date -d "2 days ago" +%Y/%m/%d)
 
-# now set pacman to use snapshot for packages for snapshot date
-echo 'Server = http://mirror.archlinuxarm.org/$arch/$repo' > /etc/pacman.d/mirrorlist
-
 echo "[info] content of arch mirrorlist file"
 cat '/etc/pacman.d/mirrorlist'
 
