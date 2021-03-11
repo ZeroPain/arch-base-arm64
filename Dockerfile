@@ -11,12 +11,9 @@ ADD build/*.conf /etc/supervisor.conf
 ADD build/root/*.sh /root/
 
 # symlink busybox utilities to /bootstrap folder
-RUN ["docker-build-start"]
 
 RUN chmod +x /root/*.sh && \
 	/bin/bash /root/install.sh
-
-RUN ["docker-build-end"]
 
 # set environment variables for user nobody
 ENV HOME /home/nobody
