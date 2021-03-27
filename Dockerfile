@@ -1,5 +1,5 @@
 FROM agners/archlinuxarm-arm64v8
-LABEL maintainer="github.com/ZeroPain"
+LABEL maintainer="github.com/zeropain"
 
 # additional files
 ##################
